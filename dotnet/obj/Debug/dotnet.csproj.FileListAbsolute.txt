@@ -1,5 +1,0 @@
-\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\dotnet\bin\Debug\dotnet.dll
-\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\dotnet\bin\Debug\dotnet.pdb
-\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\dotnet\obj\Debug\dotnet.csprojResolveAssemblyReference.cache
-\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\dotnet\obj\Debug\dotnet.dll
-\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\dotnet\obj\Debug\dotnet.pdb
