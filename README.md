@@ -1,5 +1,8 @@
 # AdventOfCode2016
 
+### Day 3
+- Unit tests in `dotnet\day3\Day3Tests.cs`
+
 ### Day 2
 - Unit tests in `dotnet\day2\Day2Tests.cs`
 - Solver gets injected with a keyboard layout
