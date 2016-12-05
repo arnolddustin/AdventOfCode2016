@@ -33,17 +33,17 @@ namespace dotnet.day3
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Part2()
-        //{
-        //    var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day2\\input.txt");
-        //    var input = File.ReadAllLines(path);
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day3\\input.txt");
+            var input = File.ReadAllLines(path);
 
-        //    var solver = new Solver(new AdvancedKeypadLayout());
-        //    var expected = "C1A88";
+            var solver = new Solver();
+            var expected = 1826;
 
-        //    var actual = solver.GetCodeFromInput(input, "5");
-        //    Assert.AreEqual(expected, actual);
-        //}
+            var actual = solver.GetValidVerticleTriangleCount(input);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
