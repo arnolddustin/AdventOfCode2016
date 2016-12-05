@@ -28,7 +28,7 @@ namespace dotnet.day4
             var input = File.ReadAllLines(path);
 
             var solver = new Solver();
-            var expected = 982;
+            var expected = 173787;
 
             var actual = solver.GetSumOfSectorIdsForRealRooms(input);
             Assert.AreEqual(expected, actual);
