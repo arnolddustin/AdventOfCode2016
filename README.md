@@ -5,7 +5,6 @@
 - Tuples used to hold buttons and coordinates
 
 ### Day 1
-- Vectors are Points with a direction
-- Locations are Points
-- Solver runs all moves then derives answers from Vector/Location history
+- Vectors and Points are used to hold position
+- Solver runs all moves then derives answers from move/location history
 - Solver calculates distance to start
