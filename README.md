@@ -1,5 +1,8 @@
 # AdventOfCode2016
 
+### Day 4
+- Unit tests in `dotnet\day4\Day4Tests.cs`
+
 ### Day 3
 - Unit tests in `dotnet\day3\Day3Tests.cs`
 
