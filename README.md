@@ -2,6 +2,8 @@
 
 ### Day 4
 - Unit tests in `dotnet\day4\Day4Tests.cs`
+- Regex is used to extract sector id
+- Room holds elements of the room
 
 ### Day 3
 - Unit tests in `dotnet\day3\Day3Tests.cs`

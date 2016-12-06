@@ -34,17 +34,31 @@ namespace dotnet.day4
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Part2()
-        //{
-        //    var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day3\\input.txt");
-        //    var input = File.ReadAllLines(path);
+        [TestMethod]
+        public void Example2()
+        {
+            var solver = new Solver();
 
-        //    var solver = new Solver();
-        //    var expected = 1826;
+            var expected = "very encrypted name";
 
-        //    var actual = solver.GetValidVerticleTriangleCount(input);
-        //    Assert.AreEqual(expected, actual);
-        //}
+            var encryptedname = "qzmt-zixmtkozy-ivhz";
+            var sectorid = 343;
+
+            var actual = solver.DecipherName(encryptedname,sectorid);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day4\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var solver = new Solver();
+            var expected = 548;
+
+            var actual = solver.GetSectorIdOfRoomWithNorthPoleObjects(input);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
