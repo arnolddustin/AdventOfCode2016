@@ -27,5 +27,21 @@ namespace dotnet.day6
 
             return sb.ToString();
         }
+
+        public string DecodeMessageReverse(IEnumerable<string> input)
+        {
+            var list = new List<string>(input);
+
+            var sb = new StringBuilder();
+
+            for (int i = 0; i < list.First().Length; i++)
+            {
+                var column = input.Select(x => x.ElementAt(i));
+                var mostFrequent = column.GroupBy(c => c).OrderBy(g => g.Count()).Select(x => x.Key).FirstOrDefault();
+                sb.Append(mostFrequent);
+            }
+
+            return sb.ToString();
+        }
     }
 }

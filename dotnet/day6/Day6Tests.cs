@@ -43,9 +43,23 @@ namespace dotnet.day6
             var input = File.ReadAllLines(path);
 
             var solver = new Solver();
-            var expected = "d4cd2ee1";
+            var expected = "umejzgdw";
 
             var actual = solver.DecodeMessage(input);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day6\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var solver = new Solver();
+            var expected = "aovueakv";
+
+            var actual = solver.DecodeMessageReverse(input);
 
             Assert.AreEqual(expected, actual);
         }

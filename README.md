@@ -3,6 +3,7 @@
 ### Day 6
 - Unit tests in `dotnet\day6\Day6Tests.cs`
 - Uses linq to find frequency
+- This one was really easy
 
 ### Day 5
 - Unit tests in `dotnet\day5\Day5Tests.cs`
