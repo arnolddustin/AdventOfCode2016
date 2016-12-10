@@ -1,5 +1,10 @@
 # AdventOfCode2016
 
+### Day 7
+- Unit tests in `dotnet\day7\Day7Tests.cs`
+- See `SolverTests()` method for unit tests on internal methods
+- Regex used to determine ABBAs and split protocol parts
+
 ### Day 6
 - Unit tests in `dotnet\day6\Day6Tests.cs`
 - Uses linq to find frequency
