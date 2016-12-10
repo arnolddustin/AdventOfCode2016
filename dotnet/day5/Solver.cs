@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -11,6 +12,39 @@ namespace dotnet.day5
 {
     public class Solver
     {
+        public string GetDoorAdvancedPassword(int startingIndex, string doorId)
+        {
+            const string PLACEHOLDER = " _ ";
+            var password = new List<string>();
+            for (int i = 0; i < 8; i++) { password.Add(PLACEHOLDER); };
+            var complete = false;
+            var currentIndex = startingIndex;
+            
+            while (!complete)
+            {
+                var nextResult = GetFirstHashStartingWithFiveZeroes(doorId, currentIndex);
+                var sixthChar = nextResult.Item2[5];
+                var seventhChar = nextResult.Item2[6];
+
+                int newPosition;
+                if (int.TryParse(sixthChar.ToString(), out newPosition))
+                {
+                    if (newPosition < 8 && password[newPosition] == PLACEHOLDER)
+                    {
+                        password[newPosition] = seventhChar.ToString();
+                        Trace.WriteLine(string.Format("index {0} has hash of {1}. Using {2} for position {3} in password. Password is now {4}", currentIndex, nextResult.Item2, seventhChar, newPosition, string.Concat(password)));
+                    }
+                }
+
+                if (password.Any(s => s == PLACEHOLDER))
+                    currentIndex = nextResult.Item1 + 1;
+                else
+                    complete = true;
+            }
+
+            return string.Concat(password);
+        }
+
         public string GetDoorPassword(int startingIndex, string doorId, int passwordLength)
         {
             var sb = new StringBuilder();
