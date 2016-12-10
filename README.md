@@ -1,5 +1,9 @@
 # AdventOfCode2016
 
+### Day 6
+- Unit tests in `dotnet\day6\Day6Tests.cs`
+- Uses linq to find frequency
+
 ### Day 5
 - Unit tests in `dotnet\day5\Day5Tests.cs`
 - Uses standard `System.Security.Cryptography` for MD5
