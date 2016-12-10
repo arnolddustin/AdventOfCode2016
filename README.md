@@ -1,5 +1,10 @@
 # AdventOfCode2016
 
+### Day 5
+- Unit tests in `dotnet\day5\Day5Tests.cs`
+- Uses standard `System.Security.Cryptography` for MD5
+- *Note*: most of the unit tests have an `Assert.Inconclusive()` so they will be skipped.  These solutions require sequential crypto calls, so they take a while to run.
+
 ### Day 4
 - Unit tests in `dotnet\day4\Day4Tests.cs`
 - Regex is used to extract sector id
