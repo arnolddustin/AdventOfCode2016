@@ -1,5 +1,9 @@
 # AdventOfCode2016
 
+### Day 9
+- Unit tests in `dotnet\day9\Day9Tests.cs`
+- See `Example1()` through `Example6()` methods for each example
+
 ### Day 8
 - Unit tests in `dotnet\day8\Day8Tests.cs`
 - See `SolverUnitTests()` method for unit tests for the Screen and Solver classes
