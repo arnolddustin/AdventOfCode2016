@@ -37,6 +37,22 @@ namespace dotnet.day7
         }
 
         [TestMethod]
+        public void Part2SolverTests()
+        {
+            var solver = new Solver();
+
+            Assert.AreEqual(0, solver.GetABAs("asdfxykd").Count());
+            Assert.AreEqual(1, solver.GetABAs("sdghgjdlp").Count());
+            Assert.AreEqual(2, solver.GetABAs("zazbz").Count());
+
+            Assert.IsTrue(solver.SupportsSuperProtocol("aba[bab]xyz"));
+            Assert.IsFalse(solver.SupportsSuperProtocol("xyx[xyx]xyx"), "xyx but no corresponding yxy");
+            Assert.IsTrue(solver.SupportsSuperProtocol("aaa[kek]eke"));
+            Assert.IsTrue(solver.SupportsSuperProtocol("zazbz[bzb]cdb"));
+
+           }
+
+        [TestMethod]
         public void Part1()
         {
             var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day7\\input.txt");
@@ -50,18 +66,18 @@ namespace dotnet.day7
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Part2()
-        //{
-        //    var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day6\\input.txt");
-        //    var input = File.ReadAllLines(path);
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day7\\input.txt");
+            var input = File.ReadAllLines(path);
 
-        //    var solver = new Solver();
-        //    var expected = "aovueakv";
+            var solver = new Solver();
+            var expected = 258;
 
-        //    var actual = solver.DecodeMessageReverse(input);
+            var actual = solver.LinesThatSupportSuperProtocol(input);
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

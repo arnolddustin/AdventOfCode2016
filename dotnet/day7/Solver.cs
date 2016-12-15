@@ -19,11 +19,38 @@ namespace dotnet.day7
             return lines.Count();
         }
 
+        public int LinesThatSupportSuperProtocol(IEnumerable<string> input)
+        {
+            var lines = SuperProtocolFilter(input);
+
+            return lines.Count();
+        }
+
         private IEnumerable<string> ProtocolFilter(IEnumerable<string> input)
         {
             foreach (var line in input)
                 if (SupportsProtocol(line))
                     yield return line;
+        }
+
+        private IEnumerable<string> SuperProtocolFilter(IEnumerable<string> input)
+        {
+            foreach (var line in input)
+                if (SupportsSuperProtocol(line))
+                    yield return line;
+        }
+
+        internal bool SupportsSuperProtocol(string line)
+        {
+            foreach (var outside in GetSegments(line, false).SelectMany(x => GetABAs(x)))
+            {
+                var reverse = string.Format("{0}{1}{0}", outside[1], outside[0]);
+                Console.WriteLine("fwd: {0}, reverse: {1}", outside, reverse);
+                if (GetSegments(line, true).Any(x => x.IndexOf(reverse) > -1))
+                    return true;
+            }
+
+            return false;
         }
 
         internal bool SupportsProtocol(string line)
@@ -67,6 +94,32 @@ namespace dotnet.day7
                     return true;
 
             return false;
+        }
+
+        internal IEnumerable<string> GetABAs(string input)
+        {
+            var list = new List<string>();
+
+            var remaining = input;
+
+            while (true)
+            {
+                string pattern = @"(.)(.)\1";
+                if (Regex.Match(remaining, pattern).Length > 0)
+                    foreach (Match match in Regex.Matches(remaining, pattern, RegexOptions.IgnoreCase))
+                        if (match.Groups[0].Value[0] != match.Groups[0].Value[1])
+                        {
+                            if (!list.Any(s => s == match.Groups[0].Value))
+                                list.Add(match.Groups[0].Value);
+                        }
+
+                if (remaining.Length < 3)
+                    break;
+
+                remaining = remaining.Substring(1);
+            }
+
+            return list;
         }
     }
 }
