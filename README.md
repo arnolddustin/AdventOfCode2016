@@ -3,7 +3,7 @@
 ### Day 10
 - Unit tests in `dotnet\day10\Day10Tests.cs`
 - `Bot` and `Output` classes used to model the problem
-` Instructions are processed until all bots have 2 chips to get answer
+- Instructions are processed until all bots have 2 chips to get answer
 
 ### Day 9
 - Unit tests in `dotnet\day9\Day9Tests.cs`

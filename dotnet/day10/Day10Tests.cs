@@ -43,19 +43,19 @@ namespace dotnet.day10
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Part2()
-        //{
-        //    var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day8\\input.txt");
-        //    var input = File.ReadAllLines(path);
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day10\\input.txt");
+            var input = File.ReadAllLines(path);
 
-        //    var solver = new Solver(50, 6);
-        //    var expected = "aovueakv";
+            var solver = new Solver();
+            var expected = 22847;
 
-        //    Console.WriteLine(solver.ToString());
-        //    var actual = solver.ToString();
+            var actual = solver.MultiplyOutputNumbers(input, 0, 1, 2);
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.IsTrue(actual > 20167, "20167 is too low");
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

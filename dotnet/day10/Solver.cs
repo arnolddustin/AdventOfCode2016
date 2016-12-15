@@ -46,12 +46,17 @@ namespace dotnet.day10
     class Output
     {
         public int Number { get; private set; }
-        public List<int> Chips { get; private set; }
+        public int? ChipNumber { get; private set; }
 
         public Output(int number)
         {
             Number = number;
-            Chips = new List<int>();
+        }
+
+        public void GiveChip(int chipNumber)
+        {
+            if (!ChipNumber.HasValue)
+                ChipNumber = chipNumber;
         }
     }
 
@@ -66,7 +71,26 @@ namespace dotnet.day10
             _outputs = new List<Output>();
         }
 
+        public int MultiplyOutputNumbers(IEnumerable<string> instructions, params int[] outputNumbers)
+        {
+            ProcessInstructions(instructions);
+
+            var total = 1;
+            foreach (var i in outputNumbers)
+                total = total * _outputs.First(o => o.Number == i).ChipNumber.Value;
+            return total;
+        }
+
         public int GetBotThatCompares(int chip1, int chip2, IEnumerable<string> instructions)
+        {
+            ProcessInstructions(instructions);
+
+            var bot = _bots.FirstOrDefault(b => b.HasChips(chip1, chip2));
+
+            return (bot != null) ? bot.Number : -1;
+        }
+
+        void ProcessInstructions(IEnumerable<string> instructions)
         {
             var current = 1;
 
@@ -86,10 +110,6 @@ namespace dotnet.day10
                     break;
                 }
             }
-
-            var bot = _bots.FirstOrDefault(b => b.HasChips(chip1, chip2));
-
-            return (bot != null) ? bot.Number : -1;
         }
 
         void ProcessInstruction(string instruction)
@@ -134,14 +154,14 @@ namespace dotnet.day10
                     if (lowIsBot)
                         _bots.Single(b => b.Number == lowTarget).GiveChip(low);
                     else
-                        _outputs.Single(o => o.Number == lowTarget).Chips.Add(low);
+                        _outputs.Single(o => o.Number == lowTarget).GiveChip(low);
 
                     // process high
                     var high = bot.High.Value;
                     if (highIsBot)
                         _bots.Single(b => b.Number == highTarget).GiveChip(high);
                     else
-                        _outputs.Single(o => o.Number == highTarget).Chips.Add(high);
+                        _outputs.Single(o => o.Number == highTarget).GiveChip(high);
                 }
             }
 
