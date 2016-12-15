@@ -50,9 +50,9 @@ namespace dotnet.day8
             var sb = new StringBuilder();
 
             foreach (var row in _pixels)
-                sb.AppendFormat("{0}|", string.Concat(row));
+                sb.AppendFormat("{0}\n", string.Concat(row));
 
-            return sb.ToString().TrimEnd('|');
+            return sb.ToString().TrimEnd('\n');
         }
 
         public int CountLitPixels()
@@ -77,6 +77,16 @@ namespace dotnet.day8
         public Solver(int screenWidth, int screenHeight)
         {
             _screen = new Screen(screenWidth, screenHeight);
+        }
+
+        public void WriteScreenToConsole(IEnumerable<string> instructions)
+        {
+            foreach (var line in instructions)
+            {
+                ProcessInstruction(line);
+            }
+
+            Console.WriteLine("Final Screen:\n{0}\n", _screen.ToString());
         }
 
         public int HowManyPixelsAreLit(IEnumerable<string> instructions)

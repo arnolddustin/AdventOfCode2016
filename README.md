@@ -12,6 +12,7 @@
 ### Day 8
 - Unit tests in `dotnet\day8\Day8Tests.cs`
 - See `SolverUnitTests()` method for unit tests for the Screen and Solver classes
+- I didn't write anything to interpret the screen for part2...run the unit test and the answer will be written to the console.
 
 ### Day 7
 - Unit tests in `dotnet\day7\Day7Tests.cs`
