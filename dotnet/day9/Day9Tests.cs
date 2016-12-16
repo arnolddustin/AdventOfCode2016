@@ -9,6 +9,8 @@ namespace dotnet.day9
     [TestClass]
     public class Day9Tests
     {
+        #region Part 1 Examples 
+
         [TestMethod]
         public void Example1()
         {
@@ -17,6 +19,7 @@ namespace dotnet.day9
             Assert.AreEqual(6, s.GetDecompressedLength("ADVENT"));
             Assert.AreEqual("ADVENT", s.DecompressString("ADVENT"));
         }
+
         [TestMethod]
         public void Example2()
         {
@@ -62,6 +65,8 @@ namespace dotnet.day9
             Assert.AreEqual("X(3x3)ABC(3x3)ABCY", s.DecompressString("X(8x2)(3x3)ABCY"));
         }
 
+        #endregion
+
         [TestMethod]
         public void Part1()
         {
@@ -76,19 +81,33 @@ namespace dotnet.day9
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Part2()
-        //{
-        //    var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day8\\input.txt");
-        //    var input = File.ReadAllLines(path);
+        [TestMethod]
+        public void Part2Examples()
+        {
+            var s = new Solver();
 
-        //    var solver = new Solver(50, 6);
-        //    var expected = "aovueakv";
+            Assert.AreEqual("XYZXYZXYZ", s.AdvancedDecompressString("(3x3)XYZ"));
+            Assert.AreEqual(9, s.GetAdvancedDecompressedLength("(3x3)XYZ"));
 
-        //    Console.WriteLine(solver.ToString());
-        //    var actual = solver.ToString();
+            Assert.AreEqual("XABCABCABCABCABCABCY", s.AdvancedDecompressString("X(8x2)(3x3)ABCY"));
+            Assert.AreEqual(20, s.GetAdvancedDecompressedLength("X(8x2)(3x3)ABCY"));
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(241920, s.GetAdvancedDecompressedLength("(27x12)(20x12)(13x14)(7x10)(1x12)A"));
+            Assert.AreEqual(445, s.GetAdvancedDecompressedLength("(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN"));
+        }
+
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day9\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var solver = new Solver();
+            var expected = 100;
+
+            var actual = solver.GetAdvancedDecompressedLength(input[0]);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

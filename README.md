@@ -5,9 +5,11 @@
 - `Bot` and `Output` classes used to model the problem
 - Instructions are processed until all bots have 2 chips to get answer
 
-### Day 9
+### Day 9 (Part 1 only)
 - Unit tests in `dotnet\day9\Day9Tests.cs`
 - See `Example1()` through `Example6()` methods for each example
+- Part 2 examples working using recursion
+- Part2 test throws an `OutOfMemoryException`, so another approach is needed
 
 ### Day 8
 - Unit tests in `dotnet\day8\Day8Tests.cs`
