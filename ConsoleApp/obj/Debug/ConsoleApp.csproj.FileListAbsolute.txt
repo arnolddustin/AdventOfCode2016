@@ -1,0 +1,9 @@
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\bin\Debug\ConsoleApp.exe
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\bin\Debug\ConsoleApp.pdb
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\obj\Debug\ConsoleApp.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\obj\Debug\ConsoleApp.exe
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\obj\Debug\ConsoleApp.pdb
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\bin\Debug\dotnet.dll
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+\\Mac\Home\Documents\Projects\Sandbox\AdventOfCode2016\ConsoleApp\bin\Debug\dotnet.pdb

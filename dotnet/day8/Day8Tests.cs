@@ -109,7 +109,9 @@ namespace dotnet.day8
             var solver = new Solver(50, 6);
             var expected = "AFBUPZBJPS";
 
-            solver.WriteScreenToConsole(input);
+            solver.RunInstructions(input);
+
+            Console.WriteLine(solver.ToString());
 
             Assert.Inconclusive("check console for output: " + expected);
         }

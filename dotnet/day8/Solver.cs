@@ -55,6 +55,12 @@ namespace dotnet.day8
             return sb.ToString().TrimEnd('\n');
         }
 
+        public IEnumerable<string> GetLines()
+        {
+            foreach (var row in _pixels)
+                yield return string.Concat(row);
+        }
+
         public int CountLitPixels()
         {
             return _pixels.SelectMany(row => row.Where(column => column == '#')).Count();
@@ -73,20 +79,27 @@ namespace dotnet.day8
     public class Solver
     {
         readonly Screen _screen;
+        public event EventHandler<IEnumerable<string>>  ScreenUpdated;
+
+        protected virtual void OnScreenUpdated(IEnumerable<string> lines)
+        {
+            ScreenUpdated?.Invoke(this, lines);
+        }
 
         public Solver(int screenWidth, int screenHeight)
         {
             _screen = new Screen(screenWidth, screenHeight);
         }
 
-        public void WriteScreenToConsole(IEnumerable<string> instructions)
+        public void RunInstructions(IEnumerable<string> instructions, int pause = 0)
         {
             foreach (var line in instructions)
             {
                 ProcessInstruction(line);
-            }
+                OnScreenUpdated(_screen.GetLines());
 
-            Console.WriteLine("Final Screen:\n{0}\n", _screen.ToString());
+                System.Threading.Thread.Sleep(pause);
+            }
         }
 
         public int HowManyPixelsAreLit(IEnumerable<string> instructions)
