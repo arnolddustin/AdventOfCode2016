@@ -1,4 +1,6 @@
 /dotnet/bin
 /dotnet/.vs
 /dotnet/obj
-/dotnet/obj/Debug
+/ConsoleApp/bin
+/ConsoleApp/.vs
+/ConsoleApp/obj
