@@ -1,5 +1,13 @@
 # AdventOfCode2016
 
+### Day 11
+- Unit tests in `dotnet\day11\Day11Tests.cs`
+- `Search` class performs a bread-first search to traverse the tree of moves
+- `State` class represents the state of the building at a give time, and `Item` instances can be `ItemType.Microchip` and `ItemType.Generator`
+- *Note*: part 2 unit test has `Assert.Inconclusive()` so that it will be skipped.  It takes around 5.5 minutes to run through my input.
+- See the notes in the unit test for details on the tricky parts
+- This one was by far the most difficult, hands down.
+
 ### Day 10
 - Unit tests in `dotnet\day10\Day10Tests.cs`
 - `Bot` and `Output` classes used to model the problem

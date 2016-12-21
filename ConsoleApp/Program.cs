@@ -19,28 +19,39 @@ namespace ConsoleApp
         void Run()
         {
             Console.WriteLine("Advent of Code 2016");
-            Console.WriteLine("Enter day number: ");
+            Console.WriteLine("Enter day number (or press Q or X to exit): ");
 
             try
             {
                 var line = Console.ReadLine();
 
-                switch (line)
+                switch (line.ToUpper())
                 {
                     case "8":
                         Day8();
                         break;
-                }
 
-             
+                    case "11":
+                        new Day11().Run();
+                        break;
+
+                    case "Q":
+                    case "X":
+                        Console.WriteLine("Exiting...");
+                        return;
+
+                    default:
+                        Console.WriteLine("Unknown day: {0}", line);
+                        break;
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
 
-            Console.WriteLine("Done. Press any key to exit.");
-            Console.ReadKey();
+            Console.WriteLine("Done. Press any key to continue.");
+            Run();
         }
 
         void Day8()

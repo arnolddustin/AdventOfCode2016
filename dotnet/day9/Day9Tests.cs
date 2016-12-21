@@ -99,6 +99,7 @@ namespace dotnet.day9
         [TestMethod]
         public void Part2()
         {
+            Assert.Fail("incomplete");
             var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day9\\input.txt");
             var input = File.ReadAllLines(path);
 

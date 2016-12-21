@@ -76,6 +76,7 @@
     <Compile Include="day1\Day1Tests.cs" />
     <Compile Include="day1\Solver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="day11\input.txt" />
