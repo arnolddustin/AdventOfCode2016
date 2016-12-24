@@ -6,7 +6,7 @@
 - `Search` class performs a bread-first search to traverse the tree of moves
 - `State` class represents the state of the building at a give time, and `Item` instances can be `ItemType.Microchip` and `ItemType.Generator`
 - This one is more difficult than previous days
-  * See the notes in the unit test for details on how equivalent states are determined
+  * See the notes [in the unit test](../blob/master/dotnet/day11/Day11Tests.cs#L13) for details on how equivalent states are determined 
   * The magic to this solution is in how `State` instances are represented during `toString()`
 
 ### Day 10
