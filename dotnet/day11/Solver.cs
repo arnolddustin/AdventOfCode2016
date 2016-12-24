@@ -84,8 +84,8 @@ namespace dotnet.day11
                 .ToList()
                 .ForEach(chip =>
                     sb.AppendFormat("{0}{1}", chip.Floor,
-                    Items.Single(i => i.ItemType == ItemType.Generator && i.Compatibility == chip.Compatibility)
-                        .Floor));
+                        Items.Single(i => i.ItemType == ItemType.Generator && i.Compatibility == chip.Compatibility)
+                            .Floor));
 
             return sb.ToString();
         }
@@ -114,21 +114,19 @@ namespace dotnet.day11
     {
         public int Example()
         {
-            var state = new State(4, new Item[]
-            {
+            var state = new State(4,
                 new Item(ItemType.Microchip, "Hydrogen", 1),
                 new Item(ItemType.Microchip, "Lithium", 1),
                 new Item(ItemType.Generator, "Hydrogen", 2),
                 new Item(ItemType.Generator, "Lithium", 3)
-            });
+            );
 
             return GetShortestSolution(state);
         }
 
         public int Part1()
         {
-            var state = new State(4, new Item[]
-            {
+            var state = new State(4,
                 new Item(ItemType.Generator, "promethium", 1),
                 new Item(ItemType.Microchip, "promethium", 1),
                 new Item(ItemType.Generator, "cobalt", 2),
@@ -139,15 +137,14 @@ namespace dotnet.day11
                 new Item(ItemType.Microchip, "curium", 3),
                 new Item(ItemType.Microchip, "ruthenium", 3),
                 new Item(ItemType.Microchip, "plutonium", 3)
-           });
+           );
 
             return GetShortestSolution(state);
         }
 
         public int Part2()
         {
-            var state = new State(4, new Item[]
-            {
+            var state = new State(4,
                 new Item(ItemType.Microchip, "elerium", 1),
                 new Item(ItemType.Microchip, "dilithium", 1),
                 new Item(ItemType.Generator, "elerium", 1),
@@ -162,7 +159,7 @@ namespace dotnet.day11
                 new Item(ItemType.Microchip, "curium", 3),
                 new Item(ItemType.Microchip, "ruthenium", 3),
                 new Item(ItemType.Microchip, "plutonium", 3)
-           });
+           );
 
             return GetShortestSolution(state);
         }
@@ -183,7 +180,7 @@ namespace dotnet.day11
     {
         public static int FindShortestSolution(State root)
         {
-            var visited = new List<string>();
+            var visited = new HashSet<string>();
 
             var queue = new Queue<State>();
             queue.Enqueue(root);
@@ -193,9 +190,9 @@ namespace dotnet.day11
                 var parent = queue.Dequeue();
 
                 var moves = FindAllPossibleMoves(parent)
-                            .Where(m => m.ElevatorFloor > 0 && m.ElevatorFloor <= m.NumberOfFloors)
-                            .Where(m => m.IsSafe())
-                            .Where(m => !visited.Contains(m.ToString()));
+                    .Where(m => m.ElevatorFloor > 0 && m.ElevatorFloor <= m.NumberOfFloors)
+                    .Where(m => !visited.Contains(m.ToString()))
+                    .Where(m => m.IsSafe());
 
                 if (moves == null || moves.Count() == 0) continue;
 

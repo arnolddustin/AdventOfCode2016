@@ -2,11 +2,12 @@
 
 ### Day 11
 - Unit tests in `dotnet\day11\Day11Tests.cs`
+- Part 1 solves in < 1s, and Part 2 in about 20 seconds
 - `Search` class performs a bread-first search to traverse the tree of moves
 - `State` class represents the state of the building at a give time, and `Item` instances can be `ItemType.Microchip` and `ItemType.Generator`
-- *Note*: part 2 unit test has `Assert.Inconclusive()` so that it will be skipped.  It takes around 5.5 minutes to run through my input.
-- See the notes in the unit test for details on the tricky parts
-- This one was by far the most difficult, hands down.
+- This one is more difficult than previous days
+  * See the notes in the unit test for details on how equivalent states are determined
+  * The magic to this solution is in how `State` instances are represented during `toString()`
 
 ### Day 10
 - Unit tests in `dotnet\day10\Day10Tests.cs`
