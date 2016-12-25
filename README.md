@@ -1,5 +1,11 @@
 # AdventOfCode2016
 
+### Day 12
+- [Unit tests](dotnet/day12/Day12Tests.cs)
+- `Solver` takes the input in the constructor (along with flag indicating whether it's part 2 or not)
+- The `GetValueFromRegister(char)` method runs the first instruction, then returns the value in the register at the end of the processing chain
+- When an instruction is executed, it returns the index of the next instruction
+
 ### Day 11
 - [Unit tests](dotnet/day11/Day11Tests.cs) 
 - Part 1 solves in < 1s, and Part 2 in about 20 seconds
