@@ -11,37 +11,36 @@ namespace ConsoleApp
     {
         public void Run()
         {
-            var s = new Solver();
+            Console.WriteLine("commented out");
+            //Console.WriteLine("Press E for example, 1 for part 1, or 2 for part 2");
+            //var key = Console.ReadKey();
+            //Console.Clear();
 
-            Console.WriteLine("Press E for example, 1 for part 1, or 2 for part 2");
-            var key = Console.ReadKey();
-            Console.Clear();
+            //int resultCount = 0;
 
-            int resultCount = 0;
+            //switch (key.Key)
+            //{
+            //    case ConsoleKey.E:
+            //        Console.WriteLine("Running example...\n");
+            //        resultCount = s.Example();
+            //        break;
 
-            switch (key.Key)
-            {
-                case ConsoleKey.E:
-                    Console.WriteLine("Running example...\n");
-                    resultCount = s.Example();
-                    break;
+            //    case ConsoleKey.D1:
+            //        Console.WriteLine("Running part 1...\n");
+            //        resultCount = s.Part1();
+            //        break;
 
-                case ConsoleKey.D1:
-                    Console.WriteLine("Running part 1...\n");
-                    resultCount = s.Part1();
-                    break;
+            //    case ConsoleKey.D2:
+            //        Console.WriteLine("Running part 2...\n");
+            //        resultCount = s.Part2();
+            //        break;
 
-                case ConsoleKey.D2:
-                    Console.WriteLine("Running part 2...\n");
-                    resultCount = s.Part2();
-                    break;
+            //    default:
+            //        Console.WriteLine("Invalid Key");
+            //        break;
+            //}
 
-                default:
-                    Console.WriteLine("Invalid Key");
-                    break;
-            }
-
-            Console.WriteLine("Results: {0}", resultCount);
+            //Console.WriteLine("Results: {0}", resultCount);
 
             //s.Example();
             //var input = new string[] {

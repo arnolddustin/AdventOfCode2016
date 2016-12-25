@@ -65,10 +65,15 @@ namespace dotnet.day11
         [TestMethod]
         public void Example()
         {
-            var solver = new Solver();
+            var state = new State(4,
+               new Item(ItemType.Microchip, "Hydrogen", 1),
+               new Item(ItemType.Microchip, "Lithium", 1),
+               new Item(ItemType.Generator, "Hydrogen", 2),
+               new Item(ItemType.Generator, "Lithium", 3)
+            );
 
             var expected = 11;
-            var actual = solver.Example();
+            var actual = Solver.GetShortestSolution(state);
 
             Assert.AreEqual(expected, actual);
         }
@@ -76,10 +81,22 @@ namespace dotnet.day11
         [TestMethod]
         public void Part1()
         {
-            var solver = new Solver();
+            var state = new State(4,
+               new Item(ItemType.Generator, "promethium", 1),
+               new Item(ItemType.Microchip, "promethium", 1),
+               new Item(ItemType.Generator, "cobalt", 2),
+               new Item(ItemType.Generator, "curium", 2),
+               new Item(ItemType.Generator, "ruthenium", 2),
+               new Item(ItemType.Generator, "plutonium", 2),
+               new Item(ItemType.Microchip, "cobalt", 3),
+               new Item(ItemType.Microchip, "curium", 3),
+               new Item(ItemType.Microchip, "ruthenium", 3),
+               new Item(ItemType.Microchip, "plutonium", 3)
+            );
+
             var expected = 33;
 
-            var actual = solver.Part1();
+            var actual = Solver.GetShortestSolution(state);
 
             Assert.AreEqual(expected, actual);
         }
@@ -87,10 +104,26 @@ namespace dotnet.day11
         [TestMethod]
         public void Part2()
         {
-            var solver = new Solver();
+            var state = new State(4,
+               new Item(ItemType.Microchip, "elerium", 1),
+               new Item(ItemType.Microchip, "dilithium", 1),
+               new Item(ItemType.Generator, "elerium", 1),
+               new Item(ItemType.Generator, "dilithium", 1),
+               new Item(ItemType.Generator, "promethium", 1),
+               new Item(ItemType.Microchip, "promethium", 1),
+               new Item(ItemType.Generator, "cobalt", 2),
+               new Item(ItemType.Generator, "curium", 2),
+               new Item(ItemType.Generator, "ruthenium", 2),
+               new Item(ItemType.Generator, "plutonium", 2),
+               new Item(ItemType.Microchip, "cobalt", 3),
+               new Item(ItemType.Microchip, "curium", 3),
+               new Item(ItemType.Microchip, "ruthenium", 3),
+               new Item(ItemType.Microchip, "plutonium", 3)
+            );
+
             var expected = 57;
 
-            var actual = solver.Part2();
+            var actual = Solver.GetShortestSolution(state);
 
             Assert.AreEqual(expected, actual);
         }
