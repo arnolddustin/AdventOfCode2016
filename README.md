@@ -2,7 +2,7 @@
 
 ### Day 14
 - [Unit tests](dotnet/day14/Day14Tests.cs)
-- Only Part 1 completed
+- Test in part 2 are short-circuited by an `Assert.Inconclusive()` because they take a while (~5 minutes) to run
 - A `Dictionary<int, string>` is used to cache MD5 hashes for the indexes
 
 ### Day 13
