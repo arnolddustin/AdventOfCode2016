@@ -1,5 +1,13 @@
 # AdventOfCode2016
 
+### Day 13
+- [Unit tests](dotnet/day13/Day13Tests.cs)
+- `Solver` takes the input in the constructor
+- Both parts use a bread-first search to calculate steps/locations
+- The `FindMinimumStepsBetween(int, int, int, int)` method finds the minimum steps between two points
+- The `LocationsWithinSteps(int, int, int)` method returns a count of all unique locations reachable within the specified steps
+
+
 ### Day 12
 - [Unit tests](dotnet/day12/Day12Tests.cs)
 - `Solver` takes the input in the constructor (along with flag indicating whether it's part 2 or not)
