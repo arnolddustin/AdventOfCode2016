@@ -1,5 +1,10 @@
 # AdventOfCode2016
 
+### Day 14
+- [Unit tests](dotnet/day14/Day14Tests.cs)
+- Only Part 1 completed
+- A `Dictionary<int, string>` is used to cache MD5 hashes for the indexes
+
 ### Day 13
 - [Unit tests](dotnet/day13/Day13Tests.cs)
 - `Solver` takes the input in the constructor

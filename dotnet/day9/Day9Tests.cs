@@ -99,7 +99,7 @@ namespace dotnet.day9
         [TestMethod]
         public void Part2()
         {
-            Assert.Fail("incomplete");
+            Assert.Fail("Day 9, Part 2 is not complete.");
             var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day9\\input.txt");
             var input = File.ReadAllLines(path);
 
