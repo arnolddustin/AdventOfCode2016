@@ -1,5 +1,11 @@
 # AdventOfCode2016
 
+### Day 15
+- [Unit tests](dotnet/day15/Day15Tests.cs)
+- Example, Part 1, and Part 2 solved
+- This is an elegant solution, but the code is custom to my input
+- Currently the `Disc` class is not used from anything
+
 ### Day 14
 - [Unit tests](dotnet/day14/Day14Tests.cs)
 - Test in part 2 are short-circuited by an `Assert.Inconclusive()` because they take a while (~5 minutes) to run
