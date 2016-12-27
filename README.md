@@ -3,8 +3,7 @@
 ### Day 15
 - [Unit tests](dotnet/day15/Day15Tests.cs)
 - Example, Part 1, and Part 2 solved
-- This is an elegant solution, but the code is custom to my input
-- Currently the `Disc` class is not used from anything
+- The key algorithm is [in the Disc class](dotnet/day15/Solver.cs#L25)
 
 ### Day 14
 - [Unit tests](dotnet/day14/Day14Tests.cs)

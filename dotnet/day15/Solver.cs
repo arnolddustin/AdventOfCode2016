@@ -9,60 +9,52 @@ namespace dotnet.day15
 {
     public class Disc
     {
-        public int Size { get; private set; }
-        public int InitialPosition { get; private set; }
+        readonly int _number;
+        readonly int _size;
+        readonly int _initialPosition;
 
-        public Disc(int size, int initialPosition)
+        public Disc(int number, int size, int initialPosition)
         {
-            Size = size;
-            InitialPosition = initialPosition;
+            _number = number;
+            _size = size;
+            _initialPosition = initialPosition;
+        }
+
+        public bool IsOpen(int t)
+        {
+            return (_initialPosition + t + _number) % _size == 0;
         }
     }
 
     public class Solver
     {
-        const int MAX = 1000000000;
-        readonly Disc[] _discs;
-
-        public Solver(params Disc[] discs)
+        public int Solve(IEnumerable<string> input)
         {
-            _discs = discs;
+            return Solve(CreateDiscsFromInput(input));
         }
 
-        public int Example()
+        IEnumerable<Disc> CreateDiscsFromInput(IEnumerable<string> input)
         {
-            for (var t = 0; t < MAX; t++)
-                if ((4 + (t + 1)) % 5 == 0)
-                    if ((1 + (t + 2)) % 2 == 0)
-                        return t;
+            foreach (var s in input)
+            {
+                var number = int.Parse(s.Substring(6, 1));
+                var size = int.Parse(s.Substring(12, 2).TrimEnd(' '));
+                var position = int.Parse(s.Substring(s.IndexOf("ion ") + 4).TrimEnd('.'));
 
-            return 0;
-        }
-        public int Part1()
-        {
-            for (var t = 0; t < MAX; t++)
-                if ((11 + (t + 1)) % 13 == 0)
-                    if ((0 + (t + 2)) % 5 == 0)
-                        if ((11 + (t + 3)) % 17 == 0)
-                            if ((0 + (t + 4)) % 3 == 0)
-                                if ((2 + (t + 5)) % 7 == 0)
-                                    if ((17 + t + 6) % 19 == 0)
-                                        return t;
-            return 0;
+                yield return new Disc(number, size, position);
+            }
         }
 
-        public int Part2()
+        internal int Solve(IEnumerable<Disc> discs)
         {
-            for (var t = 0; t < MAX; t++)
-                if ((11 + (t + 1)) % 13 == 0)
-                    if ((0 + (t + 2)) % 5 == 0)
-                        if ((11 + (t + 3)) % 17 == 0)
-                            if ((0 + (t + 4)) % 3 == 0)
-                                if ((2 + (t + 5)) % 7 == 0)
-                                    if ((17 + t + 6) % 19 == 0)
-                                        if ((0 + t + 7) % 11 == 0)
-                                            return t;
-            return 0;
+            var t = 0;
+            while (true)
+            {
+                if (discs.All(d => d.IsOpen(t)))
+                    return t;
+
+                t++;
+            }
         }
     }
 }

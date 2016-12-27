@@ -13,28 +13,27 @@ namespace dotnet.day15
         [TestMethod]
         public void Examples()
         {
-            var s = new Solver(
-                    new Disc(5, 4),
-                    new Disc(2, 1)
-                );
+            var s = new Solver();
+            var discs = new Disc[] {
+                new Disc(1, 5, 4),
+                new Disc(2, 2, 1)
+            };
 
-            Assert.AreEqual(5, s.Example());
+            Assert.AreEqual(5, s.Solve(discs));
+
         }
 
         [TestMethod]
         public void Part1()
         {
-            var solver = new Solver(
-                new Disc(31, 11),
-                new Disc(5, 0),
-                new Disc(17, 11),
-                new Disc(3, 0),
-                new Disc(7, 2),
-                new Disc(19, 17)
-                );
+
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day15\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var solver = new Solver();
 
             var expected = 122318;
-            var actual = solver.Part1();
+            var actual = solver.Solve(input);
 
             Assert.AreEqual(expected, actual);
         }
@@ -42,18 +41,16 @@ namespace dotnet.day15
         [TestMethod]
         public void Part2()
         {
-            var solver = new Solver(
-                new Disc(31, 11),
-                new Disc(5, 0),
-                new Disc(17, 11),
-                new Disc(3, 0),
-                new Disc(7, 2),
-                new Disc(19, 17),
-                new Disc(11, 0)
-                );
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day15\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var list = new List<string>(input);
+            list.Add("Disc #7 has 11 positions; at time=0, it is at position 0.");
+
+            var solver = new Solver();
 
             var expected = 3208583;
-            var actual = solver.Part2();
+            var actual = solver.Solve(list);
 
             Assert.AreEqual(expected, actual);
         }
