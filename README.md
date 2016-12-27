@@ -1,5 +1,9 @@
 # AdventOfCode2016
 
+### Day 16
+- [Unit tests](dotnet/day16/Day16Tests.cs) for dragon curve, checksum, and combined
+- Examples, Part 1, and Part 2 solved
+
 ### Day 15
 - [Unit tests](dotnet/day15/Day15Tests.cs)
 - Example, Part 1, and Part 2 solved
