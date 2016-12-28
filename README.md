@@ -1,5 +1,10 @@
 # AdventOfCode2016
 
+### Day 19
+- [Unit tests](dotnet/day19/Day19Tests.cs)
+- Examples and Part 1 solved
+- Part 1 solution is done using a queue
+
 ### Day 18
 - [Unit tests](dotnet/day18/Day18Tests.cs) for `GetNextRows()` and `GetSafeTileCount()` methods
 - Examples, Part 1, and Part 2 solved

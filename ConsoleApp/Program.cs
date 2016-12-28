@@ -35,6 +35,10 @@ namespace ConsoleApp
                         new Day11().Run();
                         break;
 
+                    case "19":
+                        Day19();
+                        break;
+
                     case "Q":
                     case "X":
                         Console.WriteLine("Exiting...");
@@ -54,6 +58,20 @@ namespace ConsoleApp
             Run();
         }
 
+        void Day19()
+        {
+            Console.Clear();
+            Console.WriteLine("Day 19...");
+
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day19\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var s = new dotnet.day19.Solver(int.Parse(input.First()));
+            var elf = s.WhichElfGetsAllThePresents();
+
+            Console.WriteLine("Elf {0} gets all the presents", elf);
+
+        }
         void Day8()
         {
             Console.Clear();
