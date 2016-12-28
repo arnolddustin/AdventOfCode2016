@@ -39,6 +39,10 @@ namespace ConsoleApp
                         Day19();
                         break;
 
+                    case "20":
+                        Day20();
+                        break;
+
                     case "Q":
                     case "X":
                         Console.WriteLine("Exiting...");
@@ -58,6 +62,20 @@ namespace ConsoleApp
             Run();
         }
 
+        void Day20()
+        {
+            Console.Clear();
+            Console.WriteLine("Day 20...");
+
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day20\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var s = new dotnet.day20.Solver(input);
+            var result = s.GetLowestUnblockedIP();
+
+            Console.WriteLine("IP {0} is the lowest unblocked IP.", result);
+
+        }
         void Day19()
         {
             Console.Clear();

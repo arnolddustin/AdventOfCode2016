@@ -1,5 +1,10 @@
 # AdventOfCode2016
 
+### Day 20
+- [Unit tests](dotnet/day20/Day20Tests.cs)
+- Examples and Part 1 solved
+- Lowest value is found by [merging the ranges](dotnet/day20/Solver.cs#L57) then finding the [lowest number outside of the merged ranges](dotnet/day20/Solver.cs#L42)
+
 ### Day 19
 - [Unit tests](dotnet/day19/Day19Tests.cs)
 - Examples, Part 1, and Part2 solved
