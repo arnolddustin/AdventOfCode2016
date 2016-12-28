@@ -10,13 +10,18 @@ namespace dotnet.day20
 {
     class Range
     {
-        public Int64 Min { get; set; }
-        public Int64 Max { get; set; }
+        public long Min { get; set; }
+        public long Max { get; set; }
 
-        public Range(Int64 min, Int64 max)
+        public Range(long min, long max)
         {
             Min = min;
             Max = max;
+        }
+
+        public bool IsInclusiveOf(long n)
+        {
+            return Min <= n && Max >= n;
         }
     }
 
@@ -41,50 +46,74 @@ namespace dotnet.day20
 
         public long GetLowestUnblockedIP()
         {
-            var merged = MergeRanges(_ranges).ToList();
+            return GetAllowedIps(_ranges).Min(r => r);
+        }
 
-            long n = 0;
-            while (n < MAX)
+        public long GetAllowedIpCount()
+        {
+            return GetAllowedIps(_ranges).Count();
+        }
+
+        static IEnumerable<long> GetAllowedIps(IEnumerable<Range> ranges)
+        {
+            var merged = MergeRanges(ranges);
+            var stack = new Stack<Range>(merged);
+
+            List<long> allowedIps = new List<long>();
+
+            long current = 0;
+            while (stack.Count > 0)
             {
-                if (!merged.Any(r => r.Min <= n && r.Max >= n))
-                    return n;
-                n++;
+                var range = stack.Pop();
+
+                if (range.IsInclusiveOf(current))
+                {
+                    current = range.Max + 1;
+                    continue;
+                }
+
+                if (current < range.Min)
+                {
+                    for (var i = current; i < range.Min; i++)
+                        allowedIps.Add(i);
+
+                    current = range.Max + 1;
+                    continue;
+                }
             }
 
-            return -1;
+            return allowedIps;
         }
 
         static IEnumerable<Range> MergeRanges(IEnumerable<Range> ranges)
         {
-            // sort by beginning of ranges
             var list = ranges.OrderBy(r => r.Min).ToList();
 
-            // put first range on a stack
-            var s = new Stack<Range>();
-            s.Push(list.First());
+            var stack = new Stack<Range>();
+            stack.Push(list.First());
 
             // loop through the rest
             for (int i = 1; i < list.Count(); i++)
             {
-                var top = s.Peek();
+                var top = stack.Peek();
 
                 // no overlap - push to stack
-                if (top.Max < list[i].Min)
+                if (top.Max <= list[i].Min)
                 {
-                    s.Push(list[i]);
+                    stack.Push(list[i]);
                     continue;
                 }
 
                 // extends - replace top of stack with extended range
-                if (top.Max < list[i].Max)
+                if (top.Max <= list[i].Max)
                 {
                     top.Max = list[i].Max;
-                    s.Pop();
-                    s.Push(top);
+                    stack.Pop();
+                    stack.Push(top);
                 }
             }
 
-            return s.AsEnumerable();
+            return stack;
         }
     }
 }

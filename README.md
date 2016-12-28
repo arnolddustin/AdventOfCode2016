@@ -2,8 +2,10 @@
 
 ### Day 20
 - [Unit tests](dotnet/day20/Day20Tests.cs)
-- Examples and Part 1 solved
-- Lowest value is found by [merging the ranges](dotnet/day20/Solver.cs#L57) then finding the [lowest number outside of the merged ranges](dotnet/day20/Solver.cs#L42)
+- Examples, Part 1, and Part 2 solved
+- Important parts of the solution
+  - [The MergeRanges method](dotnet/day20/Solver.cs#L88) sorts and merges ranges using a `Stack<Range>`
+  - [The GetAllowedIps method](dotnet/day20/Solver.cs#L57) builds the list of IPs using the `Stack<Range>`
 
 ### Day 19
 - [Unit tests](dotnet/day19/Day19Tests.cs)

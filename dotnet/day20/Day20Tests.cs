@@ -32,28 +32,19 @@ namespace dotnet.day20
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Example2()
-        //{
-        //    var s = new Solver(5);
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day20\\input.txt");
+            var input = File.ReadAllLines(path);
 
-        //    var result = s.WhichElfGetsAllThePresentsPart2();
+            var solver = new Solver(input);
+            long expected = 119;
 
-        //    Assert.AreEqual(2, result);
-        //}
+            var actual = solver.GetAllowedIpCount();
 
-        //[TestMethod]
-        //public void Part2()
-        //{
-        //    var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day19\\input.txt");
-        //    var input = File.ReadAllLines(path);
-
-        //    var solver = new Solver(int.Parse(input.First()));
-        //    var expected = 1410967;
-
-        //    var actual = solver.WhichElfGetsAllThePresentsPart2();
-
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.IsTrue(actual < 923945885, "answer is lower than " + actual.ToString());
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
