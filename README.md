@@ -2,8 +2,9 @@
 
 ### Day 19
 - [Unit tests](dotnet/day19/Day19Tests.cs)
-- Examples and Part 1 solved
+- Examples, Part 1, and Part2 solved
 - Part 1 solution is done using a queue
+- Part 2 solution uses math
 
 ### Day 18
 - [Unit tests](dotnet/day18/Day18Tests.cs) for `GetNextRows()` and `GetSafeTileCount()` methods

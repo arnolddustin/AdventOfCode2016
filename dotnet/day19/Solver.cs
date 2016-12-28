@@ -47,5 +47,19 @@ namespace dotnet.day19
 
             return q.Single().Number;
         }
+
+        public int WhichElfGetsAllThePresentsPart2()
+        {
+            int pow = (int)Math.Floor(Math.Log(_numberOfElves) / Math.Log(3));
+            int b = (int)Math.Pow(3, pow);
+
+            if (_numberOfElves == b)
+                return _numberOfElves;
+
+            if (_numberOfElves - b <= b)
+                return _numberOfElves - b;
+
+            return 2 * _numberOfElves - 3 * b;
+        }
     }
 }
