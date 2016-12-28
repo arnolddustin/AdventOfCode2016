@@ -1,5 +1,10 @@
 # AdventOfCode2016
 
+### Day 17
+- [Unit tests](dotnet/day17/Day17Tests.cs) for has generation, allowed directions, shortest, and longest path
+- Examples, Part 1, and Part 2 solved
+- Breadth-first search used to determine shortest and longest paths
+
 ### Day 16
 - [Unit tests](dotnet/day16/Day16Tests.cs) for dragon curve, checksum, and combined
 - Examples, Part 1, and Part 2 solved
