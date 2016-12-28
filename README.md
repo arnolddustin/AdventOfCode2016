@@ -2,7 +2,7 @@
 
 ### Day 18
 - [Unit tests](dotnet/day18/Day18Tests.cs) for `GetNextRows()` and `GetSafeTileCount()` methods
-- Examples and Part 1 solved
+- Examples, Part 1, and Part 2 solved
 
 ### Day 17
 - [Unit tests](dotnet/day17/Day17Tests.cs) for has generation, allowed directions, shortest, and longest path

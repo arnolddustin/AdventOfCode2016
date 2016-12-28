@@ -43,9 +43,23 @@ namespace dotnet.day18
             var input = File.ReadAllLines(path);
 
             var solver = new Solver(input.First());
-            var expected = 2;
+            var expected = 1913;
 
             var actual = solver.GetSafeTileCount(39);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day18\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var solver = new Solver(input.First());
+            var expected = 19993564;
+
+            var actual = solver.GetSafeTileCount(399999);
 
             Assert.AreEqual(expected, actual);
         }
