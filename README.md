@@ -1,5 +1,9 @@
 # AdventOfCode2016
 
+### Day 21
+- [Unit tests](dotnet/day21/Day21Tests.cs) for each operation and combined operations
+- Examples and Part 1 complete
+
 ### Day 20
 - [Unit tests](dotnet/day20/Day20Tests.cs)
 - Examples, Part 1, and Part 2 solved
