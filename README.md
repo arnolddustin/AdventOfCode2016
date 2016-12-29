@@ -1,5 +1,9 @@
 # AdventOfCode2016
 
+### Day 22
+- [Unit tests](dotnet/day22/Day22Tests.cs)
+- Examples and Part 1 complete
+
 ### Day 21
 - [Unit tests](dotnet/day21/Day21Tests.cs) for each operation and combined operations
 - Examples and Part 1 complete
