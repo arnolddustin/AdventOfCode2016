@@ -1,5 +1,10 @@
 # AdventOfCode2016
 
+### Day 23
+- [Unit tests](dotnet/day22/Day22Tests.cs)
+- Examples and Part 1 complete
+- Used and adapted Day12 solution to solve part 1
+
 ### Day 22
 - [Unit tests](dotnet/day22/Day22Tests.cs)
 - Examples and Part 1 complete

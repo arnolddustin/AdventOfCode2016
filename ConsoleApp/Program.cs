@@ -43,6 +43,10 @@ namespace ConsoleApp
                         Day20();
                         break;
 
+                    case "23":
+                        Day23();
+                        break;
+
                     case "Q":
                     case "X":
                         Console.WriteLine("Exiting...");
@@ -60,6 +64,21 @@ namespace ConsoleApp
 
             Console.WriteLine("Done. Press any key to continue.");
             Run();
+        }
+
+        void Day23()
+        {
+            Console.Clear();
+            Console.WriteLine("Day 23...");
+
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day23\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var s = new dotnet.day23.Solver(input, 7);
+            var result = s.GetValueFromRegister('a');
+
+            Console.WriteLine("After instructions, the value of register a is: {0}", result);
+
         }
 
         void Day20()

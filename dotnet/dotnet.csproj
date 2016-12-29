@@ -53,6 +53,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="day23\Day23Tests.cs" />
+    <Compile Include="day23\Solver.cs" />
     <Compile Include="day22\Day22Tests.cs" />
     <Compile Include="day22\Solver.cs" />
     <Compile Include="day21\Day21Tests.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="day23\input.txt" />
     <Content Include="day22\input.txt" />
     <Content Include="day21\input.txt" />
     <Content Include="day20\input.txt" />
