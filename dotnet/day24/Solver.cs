@@ -212,18 +212,23 @@ namespace dotnet.day24
             return FindSolution();
         }
 
-        int FindSolution()
+        public int SolveAndComeBack()
+        {
+            return FindSolution(true);
+        }
+
+        int FindSolution(bool andReturn = false)
         {
             var visited = new HashSet<string>();
-
-            // var solutions = new List<SolutionState>();
 
             var segments = ExtractSegments().ToList();
 
             int shortestsolution = 999999;
+            Target lastVisited = null;
+            Target firstVisited = _targets.OrderBy(x => x.Number).First();
 
             var queue = new Queue<SolutionState>();
-            queue.Enqueue(new SolutionState(_targets.OrderBy(x => x.Number).First()));
+            queue.Enqueue(new SolutionState(firstVisited));
 
             while (queue.Count > 0)
             {
@@ -241,7 +246,10 @@ namespace dotnet.day24
                     if (child.VisitedTargets.Count == _targets.Count)
                     {
                         if (child.Steps < shortestsolution)
+                        {
                             shortestsolution = child.Steps;
+                            lastVisited = child.Current;
+                        }
                     }
                     else
                         if (child.Steps < shortestsolution)
@@ -249,7 +257,13 @@ namespace dotnet.day24
                 }
             }
 
-            return shortestsolution;
+            if (andReturn)
+            {
+                var segment = segments.FirstOrDefault(s => s.Start == firstVisited && s.End == lastVisited || s.Start == lastVisited && s.End == firstVisited);
+                return shortestsolution + segment.Length;
+            }
+            else
+                return shortestsolution;
         }
         internal IEnumerable<Segment> ExtractSegments()
         {
