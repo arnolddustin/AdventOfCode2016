@@ -45,18 +45,18 @@ namespace dotnet.day23
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        //public void Part2()
-        //{
-        //    var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day12\\input.txt");
-        //    var input = File.ReadAllLines(path);
+        [TestMethod]
+        public void Part2()
+        {
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day23\\input.txt");
+            var input = File.ReadAllLines(path);
 
-        //    var solver = new Solver(input, true);
-        //    var expected = 9227731;
+            var solver = new Solver(input, 12);
+            var expected = 10953;
 
-        //    var actual = solver.GetValueFromRegister('a');
+            var actual = solver.GetValueFromRegister('a');
 
-        //    Assert.AreEqual(expected, actual);
-        //}
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
