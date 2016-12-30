@@ -6,6 +6,18 @@ using System.Text.RegularExpressions;
 
 namespace dotnet.day23
 {
+    static class Extensions
+    {
+        public static string Display(this Dictionary<char, int> registers)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var register in registers)
+                sb.AppendFormat("[{0}:{1}]", register.Key, register.Value);
+            
+            return sb.ToString();
+        }
+    }
     public class Solver
     {
         readonly List<string> _instructions;
@@ -47,7 +59,16 @@ namespace dotnet.day23
             var instruction = _instructions[index];
             var command = instruction.Substring(0, 3);
 
-            Console.WriteLine("processing instruction {0}: {1}", index, instruction);
+            if (instruction == "cpy b c" 
+                && _instructions[index+1] == "inc a" 
+                && _instructions[index+2] == "dec c" 
+                && _instructions[index+3] == "jnz c -2" 
+                && _instructions[index+4] == "dec d" 
+                && _instructions[index+5] == "jnz d -5")
+            {
+                _registers['a'] = _registers['b'] * _registers['d'];
+                return index + 6;
+            }
 
             switch (command)
             {

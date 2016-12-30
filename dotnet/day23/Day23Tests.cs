@@ -52,7 +52,7 @@ namespace dotnet.day23
             var input = File.ReadAllLines(path);
 
             var solver = new Solver(input, 12);
-            var expected = 10953;
+            var expected = 479007513;
 
             var actual = solver.GetValueFromRegister('a');
 

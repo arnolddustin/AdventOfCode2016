@@ -74,7 +74,7 @@ namespace ConsoleApp
             var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day23\\input.txt");
             var input = File.ReadAllLines(path);
 
-            var s = new dotnet.day23.Solver(input, 7);
+            var s = new dotnet.day23.Solver(input, 12);
             var result = s.GetValueFromRegister('a');
 
             Console.WriteLine("After instructions, the value of register a is: {0}", result);

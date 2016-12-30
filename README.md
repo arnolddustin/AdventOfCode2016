@@ -2,8 +2,9 @@
 
 ### Day 23
 - [Unit tests](dotnet/day22/Day22Tests.cs)
-- Examples and Part 1 complete
+- Examples, Part 1, and Part 2 complete
 - Used and adapted Day12 solution to solve part 1
+- Part 2 [short-circuits a series of instructions](dotnet/day23/Solver.cs#L62) reduce processing time to ~6ms
 
 ### Day 22
 - [Unit tests](dotnet/day22/Day22Tests.cs)
