@@ -1,5 +1,12 @@
 # AdventOfCode2016
 
+### Day 24
+- [Unit tests](dotnet/day24/Day24Tests.cs)
+- Examples and Part 1 complete
+- Part 1 approach:
+  - Use breadth-first search to find shortest routes between all targets
+  - Use breadth-first search to find shortest path along those routes inclusive of all targets
+
 ### Day 23
 - [Unit tests](dotnet/day22/Day22Tests.cs)
 - Examples, Part 1, and Part 2 complete

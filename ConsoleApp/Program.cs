@@ -47,6 +47,10 @@ namespace ConsoleApp
                         Day23();
                         break;
 
+                    case "24":
+                        Day24();
+                        break;
+
                     case "Q":
                     case "X":
                         Console.WriteLine("Exiting...");
@@ -64,6 +68,21 @@ namespace ConsoleApp
 
             Console.WriteLine("Done. Press any key to continue.");
             Run();
+        }
+
+        void Day24()
+        {
+            Console.Clear();
+            Console.WriteLine("Day 24...");
+
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day24\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var s = new dotnet.day24.Solver(input);
+            var result = s.Solve();
+
+            Console.WriteLine("The solution is: {0}", result);
+
         }
 
         void Day23()
