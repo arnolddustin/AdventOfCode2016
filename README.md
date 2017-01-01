@@ -1,5 +1,18 @@
 # AdventOfCode2016
 
+### Day 25
+- [Unit tests](dotnet/day25/Day25Tests.cs)
+- Builds upon Day 23 solution, adding new output
+- The `SignalGenerator` class is constructed using the input instructions.
+  - The `Start(int i)` method starts the process at `i`, which runs until a signal (repeated pattern) is identified (the value in the 'a' register is repeated).
+  - When a signal is identified, the generator is stopped, and the signal is inspected to see if it matches the expected signal (0, 1, 0, 1, 0, 1 ...).
+  - If the signal doesn't match... the process is repeated at i+1, until a solution is found.
+  - If the signal does match... the `SignalOutput` event (which contains the signal, and the input required to produce the signal) is raised.
+- The `Solver` class is constructed usign the input instructions
+  - It creates and wires up an instance of `SignalGenerator`
+  - The `Start` method is then called on `SignalGenerator` with an initial value of 0
+  - The `Solver` then waits for the `SignalGenerator` to raise the `SignalOutput` event, which contains the solution value.
+
 ### Day 24
 - [Unit tests](dotnet/day24/Day24Tests.cs)
 - Examples, Part 1, and Part 2 complete

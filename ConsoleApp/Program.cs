@@ -19,7 +19,7 @@ namespace ConsoleApp
         void Run()
         {
             Console.WriteLine("Advent of Code 2016");
-            Console.WriteLine("Enter day number (or press Q or X to exit): ");
+            Console.WriteLine("Enter day number (or press Q or X to exit): [default: 25]");
 
             try
             {
@@ -51,6 +51,11 @@ namespace ConsoleApp
                         Day24();
                         break;
 
+                    case "25":
+                    case "":
+                        Day25();
+                        break;
+
                     case "Q":
                     case "X":
                         Console.WriteLine("Exiting...");
@@ -68,6 +73,20 @@ namespace ConsoleApp
 
             Console.WriteLine("Done. Press any key to continue.");
             Run();
+        }
+
+        void Day25()
+        {
+            Console.Clear();
+            Console.WriteLine("Day 25...");
+
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day25\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var s = new dotnet.day25.Solver(input);
+            var result = s.Solve(0);
+
+            Console.WriteLine("The solution is: {0}", result);
         }
 
         void Day24()
@@ -149,7 +168,7 @@ namespace ConsoleApp
             Console.Clear();
             foreach (var line in e)
             {
-                foreach(var c in line)
+                foreach (var c in line)
                 {
                     Console.ForegroundColor = (c == '#') ? ConsoleColor.Yellow : ConsoleColor.DarkBlue;
                     Console.Write(c);
