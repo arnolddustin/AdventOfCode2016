@@ -68,6 +68,16 @@ namespace dotnet.day21
             return s.RotateRight(rotations);
         }
 
+        public static string RotateBaseOnLetterPosition_Reverse(this string s, char letter)
+        {
+            var offsets = new int[] { 9, 1, 6, 2, 7, 3, 8, 4 };
+            var index = s.IndexOf(letter);
+
+            var rotations = offsets[index];
+
+            return s.RotateLeft(rotations);
+        }
+
         public static string ReversePositions(this string s, int start, int end)
         {
             var sb = new StringBuilder();
@@ -85,6 +95,15 @@ namespace dotnet.day21
             var result = string.Format("{0}{1}", s.Substring(0, x), s.Substring(x + 1));
 
             return result.Insert(y, letter.ToString());
+        }
+
+        public static string MovePosition_Reverse(this string s, int x, int y)
+        {
+            var letter = s[y];
+
+            var result = string.Format("{0}{1}", s.Substring(0, y), s.Substring(y + 1));
+
+            return result.Insert(x, letter.ToString());
         }
     }
 
@@ -107,8 +126,21 @@ namespace dotnet.day21
             return result;
         }
 
-        public string ProcessInstruction(string input, string instruction)
+        public string GetUnscrambledPassword()
         {
+            var result = _password;
+            _instructions.Reverse();
+
+            foreach (var instruction in _instructions)
+                result = ProcessInstruction(result, instruction, true);
+
+            return result;
+        }
+
+        public string ProcessInstruction(string input, string instruction, bool reverse = false)
+        {
+            Console.WriteLine("processing instruction: {0}", instruction);
+
             if (instruction.StartsWith("swap position"))
             {
                 var p1 = int.Parse(instruction.Substring(14, 1));
@@ -138,29 +170,43 @@ namespace dotnet.day21
                 var p1 = int.Parse(instruction.Substring(14, 1));
                 var p2 = int.Parse(instruction.Substring(28));
 
-                return input.MovePosition(p1,p2);
+                if (reverse)
+                    return input.MovePosition_Reverse(p1, p2);
+                else
+                    return input.MovePosition(p1, p2);
             }
 
             if (instruction.StartsWith("rotate left"))
             {
                 var i = int.Parse(instruction.Substring(12, 1));
-                return input.RotateLeft(i);
+
+                if (reverse)
+                    return input.RotateRight(i);
+                else
+                    return input.RotateLeft(i);
             }
 
             if (instruction.StartsWith("rotate right"))
             {
                 var i = int.Parse(instruction.Substring(12, 2));
-                return input.RotateRight(i);
+
+                if (reverse)
+                    return input.RotateLeft(i);
+                else
+                    return input.RotateRight(i);
             }
 
             if (instruction.StartsWith("rotate based"))
             {
                 var c = instruction.Last();
-                return input.RotateBaseOnLetterPosition(c);
+
+                if (reverse)
+                    return input.RotateBaseOnLetterPosition_Reverse(c);
+                else
+                    return input.RotateBaseOnLetterPosition(c);
             }
 
             throw new ApplicationException("unknown instruction: " + instruction);
         }
-
     }
 }
