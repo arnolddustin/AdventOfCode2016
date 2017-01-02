@@ -86,27 +86,22 @@ namespace dotnet.day9
         {
             var s = new Solver();
 
-            Assert.AreEqual("XYZXYZXYZ", s.AdvancedDecompressString("(3x3)XYZ"));
-            Assert.AreEqual(9, s.GetAdvancedDecompressedLength("(3x3)XYZ"));
-
-            Assert.AreEqual("XABCABCABCABCABCABCY", s.AdvancedDecompressString("X(8x2)(3x3)ABCY"));
-            Assert.AreEqual(20, s.GetAdvancedDecompressedLength("X(8x2)(3x3)ABCY"));
-
-            Assert.AreEqual(241920, s.GetAdvancedDecompressedLength("(27x12)(20x12)(13x14)(7x10)(1x12)A"));
-            Assert.AreEqual(445, s.GetAdvancedDecompressedLength("(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN"));
+            Assert.AreEqual(9, s.AdvancedDecompressLength("(3x3)XYZ"));
+            Assert.AreEqual(20, s.AdvancedDecompressLength("X(8x2)(3x3)ABCY"));
+            Assert.AreEqual(241920, s.AdvancedDecompressLength("(27x12)(20x12)(13x14)(7x10)(1x12)A"));
+            Assert.AreEqual(445, s.AdvancedDecompressLength("(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN"));
         }
 
         [TestMethod]
         public void Part2()
         {
-            Assert.Fail("Day 9, Part 2 is not complete.");
             var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day9\\input.txt");
             var input = File.ReadAllLines(path);
 
             var solver = new Solver();
-            var expected = 100;
+            var expected = 11797310782;
 
-            var actual = solver.GetAdvancedDecompressedLength(input[0]);
+            var actual = solver.AdvancedDecompressLength(input[0]);
 
             Assert.AreEqual(expected, actual);
         }

@@ -100,11 +100,11 @@
 - `Bot` and `Output` classes used to model the problem
 - Instructions are processed until all bots have 2 chips to get answer
 
-### Day 9 (Part 1 only)
+### Day 9
 - [Unit tests](dotnet/day9/Day9Tests.cs)
 - See `Example1()` through `Example6()` methods for each example
 - Part 2 examples working using recursion
-- Part2 test throws an `OutOfMemoryException`, so another approach is needed
+- Part2 works with recursion like Part1, but it only keeps track of the length of the strings to keep memory from blowing up.
 
 ### Day 8
 - Run console app with `8` as input for visualization of instructions

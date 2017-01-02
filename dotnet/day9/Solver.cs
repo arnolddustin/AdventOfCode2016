@@ -59,18 +59,9 @@ namespace dotnet.day9
             return sb.ToString();
         }
 
-        public int GetAdvancedDecompressedLength(string line)
-        {
-            var decompressed = AdvancedDecompressString(line);
-
-            return decompressed.Length;
-        }
-
-        internal string AdvancedDecompressString(string s)
+        internal long AdvancedDecompressLength(string s)
         {
             var regex = new Regex(@"\((?<markerleft>\d+)x(?<markerright>\d+)\)");
-
-            var sb = new StringBuilder();
 
             Match match;
             var remaining = s;
@@ -78,18 +69,20 @@ namespace dotnet.day9
             int right = -1;
             int length = -1;
 
+            long totalLength = 0;
+
             while (true)
             {
                 match = regex.Match(remaining);
 
                 if (match.Length == 0) // no more markers
                 {
-                    sb.Append(remaining);
+                    totalLength += remaining.Length;
                     break;
                 }
 
                 // everything before the next marker
-                sb.Append(remaining.Substring(0, match.Index));
+                totalLength += match.Index;
 
                 // extract the next marker
                 length = 3 + match.Groups["markerleft"].Value.Length + match.Groups["markerright"].Value.Length;
@@ -97,21 +90,20 @@ namespace dotnet.day9
                 right = int.Parse(match.Groups["markerright"].Value);
 
                 // get string to repeat (truncate if longer than remaining string)
-                var torepeat = (match.Index +length + left > remaining.Length) ? remaining.Substring(match.Index + length) : remaining.Substring(match.Index + length, left);
+                var torepeat = (match.Index + length + left > remaining.Length) ? remaining.Substring(match.Index + length) : remaining.Substring(match.Index + length, left);
                 var originalrepeatlength = string.IsNullOrEmpty(torepeat) ? 0 : torepeat.Length;
 
                 // recurse
+                long repeatLength = originalrepeatlength;
                 if (regex.Match(torepeat).Captures.Count > 0)
-                    torepeat = AdvancedDecompressString(torepeat);
+                    repeatLength = AdvancedDecompressLength(torepeat);
 
-                // add appended
-                for (int i = 0; i < right; i++)
-                    sb.Append(torepeat);
+                totalLength += repeatLength * right;
 
                 remaining = remaining.Substring(match.Index + length + originalrepeatlength);
             }
 
-            return sb.ToString();
+            return totalLength;
         }
 
     }
