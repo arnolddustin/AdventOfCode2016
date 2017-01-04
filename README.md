@@ -15,7 +15,6 @@
 
 ### Day 24
 - [Unit tests](dotnet/day24/Day24Tests.cs)
-- Examples, Part 1, and Part 2 complete
 - Part 1 approach:
   - Use breadth-first search to find shortest routes between all targets
   - Use breadth-first search to find shortest path along those routes inclusive of all targets
@@ -23,48 +22,43 @@
 
 ### Day 23
 - [Unit tests](dotnet/day22/Day22Tests.cs)
-- Examples, Part 1, and Part 2 complete
 - Used and adapted Day12 solution to solve part 1
 - Part 2 [short-circuits a series of instructions](dotnet/day23/Solver.cs#L62) reduce processing time to ~6ms
 
 ### Day 22
 - [Unit tests](dotnet/day22/Day22Tests.cs)
-- Examples and Part 1 complete
+- Part 2 is broken down into 2 parts:
+  - First, the shortest path to moving the empty node to to the target node is determined via a bread-first search
+  - Then the steps required to move the goal data to 0,0 is calculate, knowing that 5 moves are required to move the goal data one step to the left
+  - Part 2 runs in about 30 seconds.
 
 ### Day 21
 - [Unit tests](dotnet/day21/Day21Tests.cs) for each operation and combined operations
-- Examples, Part 1, and Part 2 complete
 - For the `rotate based on position of letter X` instruction reversal, I calculated where each index ends up in part 1, then [put those indexes into an array](dotnet/day21/Solver.cs#L73) and use it to map sequences when in reverse. I suspect there's an easy way to reverse the original formula.
 
 ### Day 20
 - [Unit tests](dotnet/day20/Day20Tests.cs)
-- Examples, Part 1, and Part 2 solved
 - Important parts of the solution
   - [The MergeRanges method](dotnet/day20/Solver.cs#L88) sorts and merges ranges using a `Stack<Range>`
   - [The GetAllowedIps method](dotnet/day20/Solver.cs#L57) builds the list of IPs using the `Stack<Range>`
 
 ### Day 19
 - [Unit tests](dotnet/day19/Day19Tests.cs)
-- Examples, Part 1, and Part2 solved
 - Part 1 solution is done using a queue
 - Part 2 solution uses math
 
 ### Day 18
 - [Unit tests](dotnet/day18/Day18Tests.cs) for `GetNextRows()` and `GetSafeTileCount()` methods
-- Examples, Part 1, and Part 2 solved
 
 ### Day 17
 - [Unit tests](dotnet/day17/Day17Tests.cs) for has generation, allowed directions, shortest, and longest path
-- Examples, Part 1, and Part 2 solved
 - Breadth-first search used to determine shortest and longest paths
 
 ### Day 16
 - [Unit tests](dotnet/day16/Day16Tests.cs) for dragon curve, checksum, and combined
-- Examples, Part 1, and Part 2 solved
 
 ### Day 15
 - [Unit tests](dotnet/day15/Day15Tests.cs)
-- Example, Part 1, and Part 2 solved
 - The key algorithm is [in the Disc class](dotnet/day15/Solver.cs#L25)
 
 ### Day 14
