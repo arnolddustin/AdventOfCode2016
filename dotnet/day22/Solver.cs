@@ -23,16 +23,15 @@ namespace dotnet.day22
             Used = used;
         }
 
-        public override string ToString()
+        public bool IsAdjacentTo(Node otherNode)
         {
-            return (Empty) ? "." : "_";
+            return (X == otherNode.X && Y != otherNode.Y && Y > otherNode.Y - 2 && Y < otherNode.Y + 2)
+                || (Y == otherNode.Y && X != otherNode.X && X > otherNode.X - 2 && X < otherNode.X + 2);
         }
     }
 
     public class State : IEquatable<State>
     {
-        public List<State> History;
-
         public int Depth;
         public List<Node> Nodes;
         public int SpecialX;
@@ -44,15 +43,12 @@ namespace dotnet.day22
             Depth = 0;
             SpecialX = specialX;
             SpecialY = specialY;
-            History = new List<State>();
         }
 
         private State(State parent, Node copyDataFrom, Node copyDataTo)
         {
             Nodes = new List<Node>();
             Depth = parent.Depth + 1;
-            History = new List<State>(parent.History);
-            History.Add(parent);
 
             if (copyDataFrom.X == parent.SpecialX && copyDataFrom.Y == parent.SpecialY)
             {
@@ -101,57 +97,6 @@ namespace dotnet.day22
             foreach (var pair in Nodes.GetAdjacentViablePairs())
                 yield return new State(this, pair.Item1, pair.Item2);
         }
-
-        public string Display()
-        {
-            var xMax = Nodes.Max(n => n.X);
-            var yMax = Nodes.Max(n => n.Y);
-
-            var sb = new StringBuilder();
-            sb.Append("=====\n   ");
-
-            for (int x = 0; x < xMax + 1; x++)
-            {
-                if (x < 10)
-                    sb.AppendFormat(" {0} ", x);
-                else
-                    sb.AppendFormat(" {0}", x);
-            }
-            sb.AppendLine();
-
-            for (int y = 0; y < yMax + 1; y++)
-            {
-                if (y < 10)
-                    sb.AppendFormat("{0}  ", y);
-                else
-                    sb.AppendFormat("{0} ", y);
-
-                for (int x = 0; x < xMax + 1; x++)
-                {
-                    var node = Nodes.FirstOrDefault(n => n.X == x && n.Y == y);
-
-                    if (node == null)
-                    {
-                        sb.Append(" # ");
-                    }
-                    else if (node.Empty)
-                    {
-                        sb.Append(" - ");
-                    }
-                    else
-                    {
-                        if (node.X == SpecialX && node.Y == SpecialY)
-                            sb.Append(" G ");
-                        else
-                            sb.Append(" . ");
-                    }
-                }
-
-                sb.AppendLine("");
-            }
-
-            return sb.ToString();
-        }
     }
 
     public class Solver
@@ -170,20 +115,17 @@ namespace dotnet.day22
 
         public int FewestStepsToMoveData()
         {
-            var nodes = _nodes.Where(n => n.Size < 300).ToList();
-            var xMax = nodes.Max(n => n.X);
+            var xMax = _nodes.Max(n => n.X);
 
-            var initialState = new State(nodes, xMax, 0);
-           
-            var steps = GetStepsToEmptyGoal(initialState);
+            var initialState = new State(_nodes, xMax, 0);
+
+            var steps = GetStepsToTargetNode(initialState, xMax, 0);
 
             return steps + ((xMax - 1) * 5);
         }
 
-        static int GetStepsToEmptyGoal(State initialState)
+        static int GetStepsToTargetNode(State initialState, int x, int y)
         {
-            var xMax = initialState.Nodes.Max(n => n.X);
-
             var visited = new HashSet<string>();
 
             var queue = new Queue<State>();
@@ -203,7 +145,7 @@ namespace dotnet.day22
 
                 foreach (var child in children)
                 {
-                    if (child.Nodes.Single(n => n.X == xMax && n.Y == 0).Empty)
+                    if (child.Nodes.Single(n => n.X == x && n.Y == y).Empty)
                         return child.Depth;
 
                     visited.Add(child.ToString());
@@ -234,12 +176,6 @@ namespace dotnet.day22
 
     static class Extensions
     {
-        public static bool IsAdjacentTo(this Node node, Node otherNode)
-        {
-            return (node.X == otherNode.X && node.Y != otherNode.Y && node.Y > otherNode.Y - 2 && node.Y < otherNode.Y + 2)
-                || (node.Y == otherNode.Y && node.X != otherNode.X && node.X > otherNode.X - 2 && node.X < otherNode.X + 2);
-        }
-
         public static IEnumerable<Tuple<Node, Node>> GetAdjacentViablePairs(this IEnumerable<Node> nodes)
         {
             foreach (var node in nodes)
