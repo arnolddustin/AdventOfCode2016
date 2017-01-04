@@ -43,6 +43,10 @@ namespace ConsoleApp
                         Day20();
                         break;
 
+                    case "22":
+                        Day22();
+                        break;
+
                     case "23":
                         Day23();
                         break;
@@ -104,6 +108,21 @@ namespace ConsoleApp
 
         }
 
+        void Day22()
+        {
+            Console.Clear();
+            Console.WriteLine("Day 22...");
+
+            var path = string.Format("\\\\Mac\\Home\\Documents\\Projects\\Sandbox\\AdventOfCode2016\\dotnet\\day22\\input.txt");
+            var input = File.ReadAllLines(path);
+
+            var s = new dotnet.day22.Solver(input);
+            var result = s.FewestStepsToMoveData();
+
+            Console.WriteLine("The result is: {0}", result);
+
+        }
+
         void Day23()
         {
             Console.Clear();
@@ -118,7 +137,6 @@ namespace ConsoleApp
             Console.WriteLine("After instructions, the value of register a is: {0}", result);
 
         }
-
         void Day20()
         {
             Console.Clear();
