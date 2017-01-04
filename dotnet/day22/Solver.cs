@@ -12,9 +12,7 @@ namespace dotnet.day22
         public int Y;
         public int Size;
         public int Used;
-        public int Avail { get { return Size - Used; } }
-        public bool Empty { get { return Used == 0; } }
-
+      
         public Node(int x, int y, int size, int used)
         {
             X = x;
@@ -23,10 +21,25 @@ namespace dotnet.day22
             Used = used;
         }
 
+        public int Avail()
+        {
+            return Size - Used;
+        }
+
+        public bool Empty()
+        {
+            return Used == 0;
+        }
+
         public bool IsAdjacentTo(Node otherNode)
         {
             return (X == otherNode.X && Y != otherNode.Y && Y > otherNode.Y - 2 && Y < otherNode.Y + 2)
                 || (Y == otherNode.Y && X != otherNode.X && X > otherNode.X - 2 && X < otherNode.X + 2);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0},{1}", X, Y);
         }
     }
 
@@ -34,32 +47,17 @@ namespace dotnet.day22
     {
         public int Depth;
         public List<Node> Nodes;
-        public int SpecialX;
-        public int SpecialY;
 
-        public State(IEnumerable<Node> nodes, int specialX, int specialY)
+        public State(IEnumerable<Node> nodes)
         {
             Nodes = new List<Node>(nodes);
             Depth = 0;
-            SpecialX = specialX;
-            SpecialY = specialY;
         }
 
         private State(State parent, Node copyDataFrom, Node copyDataTo)
         {
             Nodes = new List<Node>();
             Depth = parent.Depth + 1;
-
-            if (copyDataFrom.X == parent.SpecialX && copyDataFrom.Y == parent.SpecialY)
-            {
-                SpecialX = copyDataTo.X;
-                SpecialY = copyDataTo.Y;
-            }
-            else
-            {
-                SpecialX = parent.SpecialX;
-                SpecialY = parent.SpecialY;
-            }
 
             foreach (var node in parent.Nodes)
             {
@@ -86,10 +84,7 @@ namespace dotnet.day22
 
         public override string ToString()
         {
-            //return string.Format("{0}-({1},{2})=>{3}", Depth, SpecialX, SpecialY, string.Join("", Nodes.AsEnumerable()));
-            //return string.Format("{0}-{1}", SpecialX, SpecialY);
-            var empty = Nodes.Single(n => n.Empty);
-            return string.Format("{0}-{1}-{2}-{3}", SpecialX, SpecialY, empty.X, empty.Y);
+            return Nodes.Single(n => n.Empty()).ToString();
         }
 
         public IEnumerable<State> GetChildren()
@@ -117,7 +112,7 @@ namespace dotnet.day22
         {
             var xMax = _nodes.Max(n => n.X);
 
-            var initialState = new State(_nodes, xMax, 0);
+            var initialState = new State(_nodes);
 
             var steps = GetStepsToTargetNode(initialState, xMax, 0);
 
@@ -145,7 +140,7 @@ namespace dotnet.day22
 
                 foreach (var child in children)
                 {
-                    if (child.Nodes.Single(n => n.X == x && n.Y == y).Empty)
+                    if (child.Nodes.Single(n => n.X == x && n.Y == y).Empty())
                         return child.Depth;
 
                     visited.Add(child.ToString());
@@ -182,10 +177,10 @@ namespace dotnet.day22
             {
                 foreach (var node2 in nodes.Where(n => n.IsAdjacentTo(node)))
                 {
-                    if (!node.Empty && node.Used <= node2.Avail)
+                    if (!node.Empty() && node.Used <= node2.Avail())
                         yield return new Tuple<Node, Node>(node, node2);
 
-                    if (!node2.Empty && node2.Used <= node.Avail)
+                    if (!node2.Empty() && node2.Used <= node.Avail())
                         yield return new Tuple<Node, Node>(node2, node);
                 }
             }
@@ -195,10 +190,10 @@ namespace dotnet.day22
         {
             foreach (var combo in nodes.Combinations(2))
             {
-                if (!combo.First().Empty && combo.First().Used <= combo.Last().Avail)
+                if (!combo.First().Empty() && combo.First().Used <= combo.Last().Avail())
                     yield return new Tuple<Node, Node>(combo.First(), combo.Last());
 
-                if (!combo.Last().Empty && combo.Last().Used <= combo.First().Avail)
+                if (!combo.Last().Empty() && combo.Last().Used <= combo.First().Avail())
                     yield return new Tuple<Node, Node>(combo.Last(), combo.First());
             }
         }
